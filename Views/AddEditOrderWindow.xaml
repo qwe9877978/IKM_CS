@@ -1,0 +1,41 @@
+﻿<Window x:Class="IKMC.AddEditOrderWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Заказ" Height="450" Width="500">
+    <Grid Margin="10">
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <Label Content="ID Клиента:"/>
+                <TextBox x:Name="txtIdClient" Text="{Binding IdClient}"/>
+
+                <Label Content="ID Магазина:"/>
+                <TextBox x:Name="txtIdShop" Text="{Binding IdShop}"/>
+
+                <Label Content="Сумма заказа :"/>
+                <TextBox x:Name="txtSumm" Text="{Binding SummOrder}"/>
+
+                <Label Content="Статус заказа:"/>
+                <!-- ИСПРАВЛЕНИЕ: Убрана привязка SelectedItem -->
+                <ComboBox x:Name="cmbStatus" Height="25">
+                    <ComboBoxItem Content="Создан"/>
+                    <ComboBoxItem Content="В пути"/>
+                    <ComboBoxItem Content="Доставлен"/>
+                </ComboBox>
+
+                <Label Content="Дата создания (ГГГГ-ММ-ДД):"/>
+                <TextBox x:Name="txtDate" Text="{Binding DateCreateOrder, StringFormat={}{0:yyyy-MM-dd}}"/>
+
+                <Label Content="Время создания (в секундах с начала дня):"/>
+                <TextBox x:Name="txtTime" Text="{Binding TimeCreate}"/>
+
+                <Label Content="ID Курьера:"/>
+                <TextBox x:Name="txtIdCourier" Text="{Binding IdCourier}"/>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+                    <Button Content="Сохранить" Click="Save_Click" Width="80" Height="30" Margin="5"/>
+                    <Button Content="Отмена" Click="Cancel_Click" Width="80" Height="30" Margin="5"/>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>

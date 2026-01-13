@@ -1,0 +1,103 @@
+﻿<Window x:Class="IKMC.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="IKMC Database Manager" Height="650" Width="900"
+        WindowStartupLocation="CenterScreen">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TabControl>
+            <!-- Вкладка Магазинов -->
+            <TabItem Header="Магазины">
+                <Grid>
+                    <DataGrid x:Name="ShopsGrid" AutoGenerateColumns="False" CanUserAddRows="False" 
+                              IsReadOnly="False" SelectionMode="Single" Margin="0,0,0,50"
+                              HeadersVisibility="All" GridLinesVisibility="All">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID Магазина" Binding="{Binding IdShop}" IsReadOnly="True" Width="Auto"/>
+                            <DataGridTextColumn Header="Рейтинг" Binding="{Binding RateShop}" Width="Auto"/>
+                            <DataGridTextColumn Header="ID Продукта" Binding="{Binding IdProduct}" Width="Auto"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                        <Button Content="Добавить" Click="AddShop_Click" Width="90" Height="35" Margin="5"/>
+                        <Button Content="Редактировать" Click="EditShop_Click" Width="90" Height="35" Margin="5"/>
+                        <Button Content="Удалить" Click="DeleteShop_Click" Width="90" Height="35" Margin="5"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+
+            <!-- Вкладка Продуктов -->
+            <TabItem Header="Продукты">
+                <Grid>
+                    <DataGrid x:Name="ProductsGrid" AutoGenerateColumns="False" CanUserAddRows="False" 
+                              IsReadOnly="False" SelectionMode="Single" Margin="0,0,0,50"
+                              HeadersVisibility="All" GridLinesVisibility="All">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID Продукта" Binding="{Binding IdProduct}" IsReadOnly="True" Width="Auto"/>
+                            <DataGridTextColumn Header="Цена (руб.)" Binding="{Binding Price}" Width="Auto"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                        <Button Content="Добавить" Click="AddProduct_Click" Width="90" Height="35" Margin="5"/>
+                        <Button Content="Редактировать" Click="EditProduct_Click" Width="90" Height="35" Margin="5"/>
+                        <Button Content="Удалить" Click="DeleteProduct_Click" Width="90" Height="35" Margin="5"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+
+            <!-- Вкладка Заказов -->
+            <TabItem Header="Заказы">
+                <Grid>
+                    <DataGrid x:Name="OrdersGrid" AutoGenerateColumns="False" CanUserAddRows="False" 
+                              IsReadOnly="False" SelectionMode="Single" Margin="0,0,0,50"
+                              HeadersVisibility="All" GridLinesVisibility="All">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID Заказа" Binding="{Binding IdOrder}" IsReadOnly="True" Width="Auto"/>
+                            <DataGridTextColumn Header="ID Клиента" Binding="{Binding IdClient}" Width="Auto"/>
+                            <DataGridTextColumn Header="ID Магазина" Binding="{Binding IdShop}" Width="Auto"/>
+                            <DataGridTextColumn Header="Сумма (коп.)" Binding="{Binding SummOrder}" Width="Auto"/>
+                            <DataGridTextColumn Header="Статус" Binding="{Binding Status}" Width="Auto"/>
+                            <DataGridTextColumn Header="Дата" Binding="{Binding DateCreateOrder, StringFormat={}{0:yyyy-MM-dd}}" Width="Auto"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                        <Button Content="Добавить" Click="AddOrder_Click" Width="90" Height="35" Margin="5"/>
+                        <Button Content="Редактировать" Click="EditOrder_Click" Width="90" Height="35" Margin="5"/>
+                        <Button Content="Удалить" Click="DeleteOrder_Click" Width="90" Height="35" Margin="5"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+
+            <!-- Вкладка Курьеров -->
+            <TabItem Header="Курьеры">
+                <Grid>
+                    <DataGrid x:Name="CouriersGrid" AutoGenerateColumns="False" CanUserAddRows="False" 
+                              IsReadOnly="False" SelectionMode="Single" Margin="0,0,0,50"
+                              HeadersVisibility="All" GridLinesVisibility="All">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID Курьера" Binding="{Binding IdCourier}" IsReadOnly="True" Width="Auto"/>
+                            <DataGridTextColumn Header="Рейтинг" Binding="{Binding RateCourier}" Width="Auto"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                        <Button Content="Добавить" Click="AddCourier_Click" Width="90" Height="35" Margin="5"/>
+                        <Button Content="Редактировать" Click="EditCourier_Click" Width="90" Height="35" Margin="5"/>
+                        <Button Content="Удалить" Click="DeleteCourier_Click" Width="90" Height="35" Margin="5"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Grid x:Name="LoadingGrid" Visibility="Collapsed" Background="#80000000">
+            <Border Width="200" Height="120" Background="White" CornerRadius="10" 
+                    BorderThickness="1" BorderBrush="Gray" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <StackPanel Margin="15">
+                    <TextBlock Text="Загрузка данных из базы..." FontSize="14" FontWeight="Bold" Margin="0,0,0,10" HorizontalAlignment="Center"/>
+                    <ProgressBar IsIndeterminate="True" Height="20" Width="150"/>
+                    <TextBlock Text="Пожалуйста, подождите..." Margin="0,10,0,0" FontStyle="Italic" HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>

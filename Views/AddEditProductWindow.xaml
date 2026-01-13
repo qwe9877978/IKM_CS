@@ -1,0 +1,19 @@
+﻿<Window x:Class="IKMC.AddEditProductWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Продукт" Height="200" Width="350">
+    <Grid Margin="10">
+        <StackPanel>
+            <Label Content="ID Продукта:"/>
+            <TextBox x:Name="txtIdProduct" Text="{Binding IdProduct}"/>
+
+            <Label Content="Цена (в рублях):"/>
+            <TextBox x:Name="txtPrice" Text="{Binding Price}"/>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+                <Button Content="Сохранить" Click="Save_Click" Width="80" Height="30" Margin="5"/>
+                <Button Content="Отмена" Click="Cancel_Click" Width="80" Height="30" Margin="5"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
